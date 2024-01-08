@@ -43,7 +43,7 @@ None
 
 ## 4. 举例说明 pyexp 语法规则
 
-### 1) 使用字面文法描述常量
+### 4.1 使用字面文法描述常量
 
 ``` python
 3
@@ -57,7 +57,7 @@ b'for example'
 
 &nbsp;
 
-### 2) 使用复合数据
+### 4.2 使用复合数据
 
 ``` python
 (3,4)
@@ -69,7 +69,7 @@ b'for example'
 
 &nbsp;
 
-### 3) 运算
+### 4.3 运算
 
 ``` python
 3 + 4
@@ -88,7 +88,7 @@ not (3 > 4)
 
 &nbsp;
 
-### 4) 使用变量
+### 4.4 使用变量
 
 ``` python
 var(info,{"age":20})
@@ -99,7 +99,7 @@ var(info.age) == 21
 
 &nbsp;
 
-### 5) 逗号表达式与循环语句
+### 4.5 逗号表达式与循环语句
 
 ``` python
 comma(3,4)
@@ -113,7 +113,7 @@ loop(var(count) < 5,var(count,var(count)+1),log("in loop",var(count)))
 
 &nbsp;
 
-### 6) 用支持短路判断的 or 或 and 表达 if_else 处理
+### 4.6 用支持短路判断的 or 或 and 表达 if_else 句式
 
 ``` python
 var(count,0)
