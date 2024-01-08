@@ -5,13 +5,13 @@ A tiny python expression level script engine.
 
 &nbsp;
 
-## 关于 pyexp 微脚本引擎
+## 1. 关于 pyexp 微脚本引擎
 
 pyexp 是一种运行于 python v3+ 环境的微型 python 脚本引擎，它取 python 语法规则的一个子集实现，所以很容易学习，很容上手定制开发。
 
 &nbsp;
 
-## 为什么需要 pyexp ？
+## 2. 为什么需要 pyexp ？
 
 当您的基于 python 开发的产品在部署运行中，需要某种动态解析执行的机制时，您可能希望在产品内嵌入一个微型 python 解释器，这种解释器应该是高度安全的，具备沙盒特性，它有预设的功能边界，没有安全泄露问题，同时它还是资源消耗（内存占用、CPU 占用）受控的系统，不会因为在产品中引入客户化定制能力后，不恰当脚本导致资源过重占用，导至系统崩溃或假死现象。
 
@@ -19,7 +19,7 @@ pyexp 是一种运行于 python v3+ 环境的微型 python 脚本引擎，它取
 
 &nbsp;
 
-## 安装与使用
+## 3. 安装与使用
 
 ``` bash
 git clone https://github.com/fn-share/pyexp.git
@@ -41,7 +41,7 @@ None
 
 &nbsp;
 
-## 举例说明 pyexp 语法规则
+## 4. 举例说明 pyexp 语法规则
 
 ### 1) 使用字面文法描述常量
 
@@ -124,13 +124,13 @@ comma(log('is 0') if var(count) == 0 else log('not 0'))
 
 &nbsp;
 
-## 扩展模块
+## 5. 扩展模块
 
 请参考 `dapp_lib/pyexp_libs` 之下各个源码模块，如：`bytes.py, dict.py` 等。
 
 &nbsp;
 
-## 设置脚本引擎配置常量
+## 6. 设置脚本引擎配置常量
 
 用户定制 pyexp 脚本引擎时，可按如下方法指定若干配置常量，如字串最大长度、复合变量最大成员数、循环体最大循环次数。
 
