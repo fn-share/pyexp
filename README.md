@@ -129,3 +129,17 @@ comma(log('is 0') if var(count) == 0 else log('not 0'))
 请参考 `dapp_lib/pyexp_libs` 之下各个源码模块，如：`bytes.py, dict.py` 等。
 
 &nbsp;
+
+## 设置脚本引擎配置常量
+
+用户定制 pyexp 脚本引擎时，可按如下方法指定若干配置常量，如字串最大长度、复合变量最大成员数、循环体最大循环次数。
+
+``` python
+from dapp_lib import pyexp
+
+pyexp.PYEXP_STR_MAX  = 262144   # 256K
+pyexp.PYEXP_LIST_MAX = 4096     #   4K
+pyexp.PYEXP_LOOP_MAX = 4096     #   4K
+```
+
+&nbsp;
