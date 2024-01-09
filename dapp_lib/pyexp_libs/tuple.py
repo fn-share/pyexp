@@ -5,7 +5,7 @@ from ..pyexp import *
 _module = {}
 
 @pyexp_libs(tuple,[ 'count' ])
-def _new_tuple(arg):
+def _new_tuple(arg):  # _new_* means class declare
   ret = tuple(arg)
   assert len(ret) <= PYEXP_LIST_MAX
   return ret

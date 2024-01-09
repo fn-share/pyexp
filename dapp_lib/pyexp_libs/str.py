@@ -8,7 +8,7 @@ _module = {}
   'isalnum', 'isalpha', 'isascii', 'isdigit', 'isspace',
   'lower', 'upper', 'strip', 'lstrip', 'rstrip',
   'split', 'rsplit', 'splitlines' ])
-def _new_str(arg):
+def _new_str(arg):  # _new_* means class declare
   ret = str(arg)
   assert len(ret) <= PYEXP_STR_MAX
   return ret

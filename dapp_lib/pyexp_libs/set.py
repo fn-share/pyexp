@@ -6,7 +6,7 @@ _module = {}
 
 @pyexp_libs(set,[ 'clear', 'copy', 'difference', 'intersection',
   'discard', 'pop', 'remove' ])
-def _new_dict(arg):
+def _new_dict(arg):  # _new_* means class declare
   ret = dict(arg)
   assert len(ret) <= PYEXP_LIST_MAX
   return ret

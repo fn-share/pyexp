@@ -5,7 +5,7 @@ from ..pyexp import *
 _module = {}
 
 @pyexp_libs(list,[ 'count', 'clear', 'copy', 'pop', 'remove', 'reverse', 'sort' ])
-def _new_list(arg):
+def _new_list(arg):  # _new_* means class declare
   ret = list(arg)
   assert len(ret) <= PYEXP_LIST_MAX
   return ret

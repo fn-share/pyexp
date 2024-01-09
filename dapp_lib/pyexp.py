@@ -135,14 +135,8 @@ def _eval(node, ns):
     else: raise SyntaxError('access failed: ' + node.id)
   elif isinstance(node,ast.Attribute):
     obj = _eval(node.value,ns)
-    try:
-      return getattr(obj,node.attr)
-    except AttributeError:
-      cls = getattr(obj,'__class__',None)
-      if cls:
-        k = (cls,node.attr)
-        if k in ns: return ns[k]
-      raise
+    fn = ns.get((type(obj),node.attr),None)     # try find method first
+    return getattr(obj,node.attr) if fn is None else fn
   elif isinstance(node,(ast.Str,ast.Bytes)):
     return node.s
   elif isinstance(node,ast.Num):  # int or float
