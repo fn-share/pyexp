@@ -37,6 +37,10 @@ python3 -i cli.py   # input 'break' to quit
 None
 > "abcd".upper()
 'ABCD'
+> str(3 + 5)
+'8'
+> dir(str)
+['center', 'count', 'encode', 'endswith', 'find', 'get', 'have', 'isalnum', 'isalpha', 'isascii', 'isdigit', 'isspace', 'join', 'ljust', 'lower', 'lstrip', 'replace', 'rfind', 'rjust', 'rsplit', 'rstrip', 'slice', 'split', 'splitlines', 'startswith', 'strip', 'upper', 'zfill']
 ```
 
 &nbsp;
@@ -126,7 +130,7 @@ comma(log('is 0') if var(count) == 0 else log('not 0'))
 
 ## 5. 扩展模块
 
-请参考 `dapp_lib/pyexp_libs` 之下各个源码模块，如：`bytes.py, dict.py` 等。
+脚本引擎内置 4 个函数 `loop, uses, comma, dir`，其它类定义与函数定义，请参考 `dapp_lib/pyexp_libs` 之下各个源码模块，如：`bytes.py, list.py, dict.py` 等，这些源码模块可以用 `uses` 句式导入。另外，`basetypes.py` 已包含这些基础类型模块：`bytes, str, tuple, list, dict, set, dict`。
 
 &nbsp;
 

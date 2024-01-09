@@ -126,6 +126,8 @@ def _call_fn(obj, name, args, keywords, ns):
       return fn(*args,**kw)
     else: return fn(*args)
 
+_func_types = (types.FunctionType,types.BuiltinFunctionType,types.BuiltinMethodType,types.MethodDescriptorType)
+
 def _eval(node, ns):
   if isinstance(node,ast.Name):
     if isinstance(ns,dict) and node.id in ns:
@@ -199,6 +201,16 @@ def _eval(node, ns):
             _eval(args[i],ns)
         
         return loop_count      # can be 0..PYEXP_LOOP_MAX
+      elif fn_name == 'dir':
+        arg = _eval(node.args[0],ns)
+        if type(arg) in _func_types:
+          ss = getattr(arg,'__name__','')
+          if ss[:5] == '_new_':  # it is class
+            cls_name = ss[5:]
+            return sorted([k[1] for k in ns.keys() if isinstance(k,tuple) and k[0].__name__ == cls_name])
+        elif isinstance(arg,dict):
+          return sorted([k for k in arg.keys() if isinstance(k,str)])
+        return ''
       elif fn_name == 'uses':
         for arg in node.args:
           _import_lib(arg,ns)
@@ -281,6 +293,9 @@ assert pyexp('var.set("name","wayne")',ns) == 'wayne'
 assert pyexp('var.get("name")',ns) == 'wayne'
 pyexp('var.set("info",{"age":20})',ns)
 assert pyexp('var.get("info").get("age")',ns) == 20
+
+pyexp('dir(str)',ns)
+pyexp('dir({"age":20})',ns)
 
 ns = {'var':{}}
 pyexp('uses(basetypes)',ns)
