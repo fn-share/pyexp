@@ -130,7 +130,7 @@ comma(log('is 0') if var(count) == 0 else log('not 0'))
 
 ## 5. 扩展模块
 
-脚本引擎内置 4 个函数 `loop, uses, comma, dir`，其它类定义与函数定义，请参考 `dapp_lib/pyexp_libs` 之下各个源码模块，如：`bytes.py, list.py, dict.py` 等，这些源码模块可以用 `uses` 句式导入。另外，`basetypes.py` 已包含这些基础类型模块：`bytes, str, tuple, list, dict, set, dict`。
+脚本引擎内置 4 个函数 `loop, uses, comma, dir`，其它类定义与函数定义，请参考 `dapp_lib/pyexp_libs` 之下各个源码模块，如：`bytes.py, list.py, dict.py` 等，这些源码模块可以用 `uses` 句式导入。另外，`basetypes.py` 已包含这些基础类型模块：`bytes, str, tuple, list, dict, set, dict`，通常我们只需运行 `uses(basetypes)` 一个表达式，而非逐一 uses 各基础类型模块。
 
 &nbsp;
 
