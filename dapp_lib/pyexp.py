@@ -134,7 +134,15 @@ def _eval(node, ns):
       return ns[node.id]
     else: raise SyntaxError('access failed: ' + node.id)
   elif isinstance(node,ast.Attribute):
-    return getattr(_eval(node.value,ns),node.attr)
+    obj = _eval(node.value,ns)
+    try:
+      return getattr(obj,node.attr)
+    except AttributeError:
+      cls = getattr(obj,'__class__',None)
+      if cls:
+        k = (cls,node.attr)
+        if k in ns: return ns[k]
+      raise
   elif isinstance(node,(ast.Str,ast.Bytes)):
     return node.s
   elif isinstance(node,ast.Num):  # int or float
@@ -221,6 +229,10 @@ def _eval(node, ns):
       obj = _eval(fn.value,ns)
       if obj is None: raise SyntaxError('no method: ' + fn.attr)
       return _call_fn(obj,fn.attr,node.args,node.keywords,ns)
+    elif isinstance(fn,ast.Call):
+      fn = _eval(fn,ns)
+      args = [_eval(arg,ns) for arg in node.args]
+      return fn(*args)
     
     raise SyntaxError('invalid function call')
   else: raise SyntaxError('operator not support')
